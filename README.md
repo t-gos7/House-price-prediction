@@ -1,1 +1,1 @@
-# example
+# House price prediction using Python
