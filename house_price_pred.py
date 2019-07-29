@@ -18,11 +18,11 @@ dataset = pd.read_csv("demo_2.csv")
 print(dataset.describe())
 
 dataset.hist()
-plot.show()
+#plot.show()
 
 array=dataset.values
 X=array[:,:5]
-Y=array[:,5]  
+Y=array[:,5] 
 
 # here model will make 7 sets of data (as, seed=7 ) 
 validation_size=0.20
@@ -33,15 +33,17 @@ X_train,X_test,Y_train,Y_test=model_selection.train_test_split(X,Y,test_size=val
 scoring='accuracy'
 reg = linear_model.LinearRegression()
 reg = reg.fit(X_train,Y_train)
-predictions=reg.predict(X_test)
-
-
-## setting plot style
-plot.style.use('fivethirtyeight')
+predictions=reg.predict(X_test)  # predicts outcome(here house price) for the test dataset 
+accuracy = reg.score(X_test, Y_test) #finds the residual sum squared error, i.e; (1-u/v) where u = sum((y_test - y_pred)^2)
+print("Accuracy = ",accuracy)        #and v is sum(( y_test - mean(y_test) )^2) 
+print("MAE: ", mean_absolute_error(Y_test,predictions))
+print("RMSE: ", numpy.sqrt(mean_absolute_error(Y_test,predictions)))
+## setting plot style 
+plot.style.use('ggplot')
  
 ## plotting residual errors in training data
 plot.scatter(reg.predict(X_train), reg.predict(X_train) - Y_train,
-            color = "green", s = 10, label = 'Train data')
+            color = "green", s = 10, label = 'Train data') 
  
 ## plotting residual errors in test data
 plot.scatter(reg.predict(X_test), reg.predict(X_test) - Y_test,
