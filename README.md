@@ -5,7 +5,7 @@ I have used *Linear regression* for predicting house prices. Linear regression i
 #### 1. Load the data
 We will use `Pandas` as `pd` to load the `csv` file.
 ```
-dataset = pd.read_csv("demo_2.csv")
+dataset = pd.read_csv("house_data.csv")
 #print(dataset.shape)
 #print(dataset.head(10))
 print(dataset.describe())
