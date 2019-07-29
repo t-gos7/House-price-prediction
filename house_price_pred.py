@@ -1,18 +1,13 @@
 import pandas as pd
 from pandas import read_csv
 import numpy
-from pandas.tools.plotting import scatter_matrix
 import matplotlib.pyplot as plot
 from sklearn import model_selection
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import accuracy_score
-from sklearn.svm import SVC
 from sklearn import linear_model                
 from sklearn.preprocessing import LabelEncoder 
-from sklearn import linear_model 
 from sklearn.metrics import mean_absolute_error 
 
-dataset = pd.read_csv("demo_2.csv")
+dataset = pd.read_csv("house_data.csv")
 #print(dataset.shape)
 #print(dataset.head(10))
 print(dataset.describe())
