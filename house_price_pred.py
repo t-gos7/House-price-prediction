@@ -24,15 +24,19 @@ validation_size=0.20
 seed=7
 X_train,X_test,Y_train,Y_test=model_selection.train_test_split(X,Y,test_size=validation_size,random_state=seed)
 
-##scoring part  
+# fitting the model
 scoring='accuracy'
 reg = linear_model.LinearRegression()
 reg = reg.fit(X_train,Y_train)
+
 predictions=reg.predict(X_test)  # predicts outcome(here house price) for the test dataset 
+
+# finding accuracy
 accuracy = reg.score(X_test, Y_test) #finds the residual sum squared error, i.e; (1-u/v) where u = sum((y_test - y_pred)^2)
 print("Accuracy = ",accuracy)        #and v is sum(( y_test - mean(y_test) )^2) 
 print("MAE: ", mean_absolute_error(Y_test,predictions))
 print("RMSE: ", numpy.sqrt(mean_absolute_error(Y_test,predictions)))
+
 ## setting plot style 
 plot.style.use('ggplot')
  
